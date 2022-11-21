@@ -110,7 +110,7 @@
 //   console.log(value)
 // })
 
-//                                                              Object{.keys(obj), .values(obj), .entries(obj)}
+//                                                                                  Object{.keys(obj), .values(obj), .entries(obj)}
 // let user = {
 //   firName: "John",
 //   lastName: "Doe",
@@ -118,15 +118,150 @@
 // };
 // let keys1 = Object.keys(user);
 
-let prices = {
-  banana: 1,
-  orange: 2,
-  meat: 4,
-};
-let doublePrices = Object.fromEntries(
-  Object.entries(prices).map((entries) => [entries])
-);
-console.log(doublePrices);
+// let prices = {
+//   banana: 1,
+//   orange: 2,
+//   meat: 4,
+// };
+// let doublePrices = Object.fromEntries(
+//   Object.entries(prices).map((entries) => [entries])
+// );
+// console.log(doublePrices);
+
 // let array = ["one", "two", "four"];
 // let elem = array.map(elements => [elements]);
 // console.log(elem);
+
+//                                                                                  ARRAY DESTRUCTURING
+// let arr = ["John", "Doe"];
+// let [firNam, surNam] = arr;
+// console.log(firNam);
+
+// const obj = {
+//     firNam : "John",
+//     surNam : "Doe",
+//     age : 21,
+// };
+// for(let [key, value] of Object.entries(obj)){
+//     console.log(`${key}:${value}`);
+// };
+
+// let guest = "Jane";
+// let admin = "Pete";
+// // Let's swap the values:
+// [guest, admin] = [admin, guest];
+// console.log(guest);
+
+//                                                                                  OBJECT DESTRUCTURING
+// let {secNam, firNam: f, age} = {firNam: "John", secNam: "Doe"};
+// console.log(f);
+
+// let navBar = {
+//     title: "navbarMenu",
+//     items: ["Home", "Account"],
+//     widthOfNavbar: "100px",
+//     heightOfNavbar: "200px"
+// };
+
+// function showMenu({ title, widthOfNavbar, heightOfNavbar, items, }) {
+//   console.log(`${title} ${widthOfNavbar} ${heightOfNavbar}`);
+//   console.log(items);
+// }
+
+// showMenu(navBar);
+
+//                                                                                  PRACTICE
+//                                      (1)
+// let user = { firName: "John", years: 30 };
+// let { firName, years, isAdmin } = user;
+// console.log( firName );
+// console.log( years );
+// if ( isAdmin == undefined ){
+//     console.log( "user is not admin" )
+// };
+// for( const [person, salary] of personSalary){
+//     if( Math.max(personSalary) ){
+//         console.log("max")
+//     }
+// }
+
+//                                      (2)
+// let salaries = {
+//     John: 100,
+//     Pete: 300,
+//     Mary: 250,
+// };
+// personSalary = Object.values( salaries );
+// console.log( personSalary );
+// let maxSalary = (Math.max( ...personSalary ));
+// console.log(maxSalary);
+
+//                                                                                  JSON, JSON METHODS
+// const user = {
+//     firNam: "John",
+//     age: 22,
+//     skills: ["HTML5", "CSS3", "JS"],
+//     isAdmin: true,
+// };
+// console.log(user);
+// let jsonFormat = JSON.stringify(user);
+// console.log((jsonFormat));
+// let parsedJson = JSON.parse(jsonFormat);
+// console.log((parsedJson));
+
+// circular references can not be converted into strings using JSON.stringify( Object )
+// const user = {
+//     firNam: "John",
+//     age: 22,
+//     skills: ["HTML5", "CSS3", "JS"],
+// };
+// const admin = {
+//     isAdmin: true,
+//     loggedIn: true,
+// }
+// admin.userDetails = user;
+// user.status = admin;
+// console.log(JSON.stringify(user));             //Error: Circular References
+
+//                                                                                  REVISIT: TERINARY OPERATOR
+// let age = 18;
+// if ( age >= 18 ){
+//     console.log("Hello!");
+// }
+// else{
+//     console.log("Age Should be Greater Than 18");
+// }
+// let age = 18;
+// let response = age >= 18 ? "Hello" : "you should have an exit";
+// console.log(response);
+
+// let room = {
+//   number: 23,
+// };
+// let meetup = {
+//   title: "Conference",
+//   participants: [{ name: "John" }, { name: "Alice" }],
+//   place: room, // meetup references room
+// };
+// room.occupiedBy = meetup;
+
+// let user = {
+//   name: "John",
+//   age: 25,
+//   roles: {
+//     isAdmin: false,
+//     isEditor: true,
+//   },
+// };
+
+// console.log(JSON.stringify(user, null, 2));
+
+// let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": ["Pete", "Zeke"] }';
+
+// let user = JSON.parse(userData);
+// console.log(user)
+
+// let numbers = "[0, 1, 2, 3]";
+
+// numbers = JSON.parse(numbers);
+// console.log(numbers)
