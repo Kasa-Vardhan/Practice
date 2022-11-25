@@ -253,15 +253,79 @@
 //     isEditor: true,
 //   },
 // };
-
 // console.log(JSON.stringify(user, null, 2));
 
 // let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": ["Pete", "Zeke"] }';
-
 // let user = JSON.parse(userData);
-// console.log(user)
+// console.log(user);
 
 // let numbers = "[0, 1, 2, 3]";
-
 // numbers = JSON.parse(numbers);
 // console.log(numbers)
+
+//replacer function
+// let room = {
+//   number: 23,
+// };
+// let meetup = {
+//   title: "Conference",
+//   participants: [{ name: "John" }, { name: "Alice" }],
+//   place: room, // meetup references room
+// };
+// room.occupiedBy = meetup; // room references meetup
+// console.log(
+//   JSON.stringify(meetup, function replacer(key, value) {
+//     console.log(`${key}: ${value}`);
+//     return key == "occupiedBy" ? undefined : value;
+//   })
+// );
+
+// let arr = [{firNam: "John", salary: 1800},
+//             {firNam: "Pete", salary: 900}]
+// console.log( arr.reduce((prev, current) => prev + current.salary, 0) );
+
+// let company = {
+//   // the same object, compressed for brevity
+//   sales: [
+//     { name: "John", salary: 1000 },
+//     { name: "Alice", salary: 1600 },
+//   ],
+//   development: {
+//     sites: [
+//       { name: "Peter", salary: 2000 },
+//       { name: "Alex", salary: 1800 },
+//     ],
+//     internals: [{ name: "Jack", salary: 1300 }],
+//   },
+// };
+// function recurTrav( department ){
+//   if( Array.isArray( department )){
+//     return ( department.reduce(( prev, curr ) => prev + curr.salary, 0 ))
+//   }
+//   else{
+//     let sum = 0;
+//     for(let subDep of Object.values( department )){
+//       sum = sum + recurTrav( subDep );
+//     };
+//     return( sum );
+//   };
+// };
+// console.log(recurTrav( company ));
+
+//                                                                                  REST PARAMS
+// function allArgs ( ...args ){
+//   for ( let i = 0; i < args.length; i++){
+//     console.log( args[i] )
+//   };
+// };
+// allArgs ( "string", 1, true, null );
+
+//                                                                                  SPREAD SYNTAX
+// let str = "Hello";
+// console.log([...str]);
+// console.log( Array.from(str) );
+
+//                                                                                  COPYING ARRAY AND OBJECTS
+// let arr = [1, 2, 3];
+// let arrCopy = [...arr];
+// console.log(arr === arrCopy);
