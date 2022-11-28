@@ -329,3 +329,138 @@
 // let arr = [1, 2, 3];
 // let arrCopy = [...arr];
 // console.log(arr === arrCopy);
+
+//                                                                                  NESTED FUNCTIONS
+// function sayHiBye( firstName, lastName ) {
+//   function getFullName() {
+//     return ( firstName + " " + lastName);
+//   };
+//   return( "Hello, " + getFullName() );
+// }
+// console.log( sayHiBye("Eren","Jeager") );
+
+//                                                                                  FUNCTION OBJECT AND IT'S PROPEERTIES
+// "name" and "length" properties in a function
+// function fullName ( fName, lName ) {
+//     console.log ( fName + " " + lName );
+// };
+// fullName( "Eren", "Jeager" );
+// console.log( fullName.arguments );
+
+// Adding custom properties to a function
+// const user = {};
+// user.fName = "Eren";
+// console.log(user);
+
+//                                                                                  setTimeout and setInterval
+// let greet = ( firNam, lastNam ) => {
+//     console.log( "Hello" + ", " + firNam + " " + lastNam );
+// };
+
+// let timerId = setTimeout( greet, 1000, "Eren", "Jeager" );               setTimeout
+// console.log(timerId);
+
+// let greet = () => {
+//     console.log("Hi")
+// };
+// let timerId = setInterval(greet, 1000);              setInterval
+// setTimeout(() => {
+//     clearInterval(timerId)               clearInterval
+// }, 10000);
+
+//                                                                                  NESTED setTimeout
+// let timerId1 = setTimeout(function tick() {
+//   console.log("tick1");
+//   timerId1 = setTimeout(tick, 1000); // (*)
+// }, 5000);
+
+// let timerId = setTimeout( greet = () => {
+//     console.log( "Hi" );
+//     timerId = setTimeout (greet, 250)
+// },250);
+
+// let greet = () => {
+//     console.log( "Hi, Eren" );
+// };
+// let timer = setTimeout( greet, 1000)
+
+// setTimeout(greeting = s() => {
+//     console.log( "Hi, Mikasa" )
+// }, 1000);
+
+// let counter = 0;
+// let timerId = setInterval(() => {
+//     if(counter === 10){
+//         clearInterval(timerId);
+//     }
+//     console.log(counter++);
+// }, 1000);
+
+//                                                                                  FUNCTION BINDING
+// let user = {
+//   firstName: "John",
+// };
+// function func() {
+//   console.log(this.firstName);
+// }
+// let funcUser = func.bind(user);
+// funcUser();
+
+// let user = {
+//   firstName: "John",
+//   sayHi() {
+//     console.log(`Hello, ${this.firstName}!`);
+//   },
+// };
+// let sayHi = user.sayHi.bind(user);
+// console.log(sayHi);
+
+//                                                                                  ARROW FUNCTIONS REVISITED
+// let group = {
+//   title: "Survey Corps",
+//   students: ["Eren", "Mikasa", "Armin"],
+//   showList(){
+//     this.students.forEach( student => {
+//       console.log(`${this.title}: ${student}` );
+//     });
+//   },
+// };
+// group.showList();
+
+//                                                                                  PROPERTY FLAGS
+// let user = {
+//   firName: "John",
+// };
+// let descriptor = Object.getOwnPropertyDescriptor(user, 'firName');       //.getOwnPropertyDescriptor
+// console.log( JSON.stringify( descriptor, null, 2 ));
+
+// let user = {
+//   firNam: "John",
+// };
+// Object.defineProperty(user, "firNam", {
+//   writable: false,
+//   configurable: false,
+// });
+
+// Object.defineProperty(user, "firNam", {
+//   writable: true,
+// });
+
+// let descriptor = Object.getOwnPropertyDescriptor(user, "firNam");
+// console.log(descriptor);
+
+let user = {
+  name: "John"
+};
+Object.defineProperty(user, "name", {
+  writable: false,
+  configurable: false
+});
+// won't be able to change user.name or its flags
+// all this won't work:
+user.name = "Pete";
+// delete user.name;
+Object.defineProperty(user, "name", { value: "Pete" });
+// Object.defineProperty(user, "name", {
+//   writable: true,
+// });                                             
