@@ -196,6 +196,7 @@
 // let maxSalary = (Math.max( ...personSalary ));
 // console.log(maxSalary);
 
+
 //                                                                                  JSON, JSON METHODS
 // const user = {
 //     firNam: "John",
@@ -223,6 +224,7 @@
 // user.status = admin;
 // console.log(JSON.stringify(user));             //Error: Circular References
 
+
 //                                                                                  REVISIT: TERINARY OPERATOR
 // let age = 18;
 // if ( age >= 18 ){
@@ -235,6 +237,7 @@
 // let response = age >= 18 ? "Hello" : "you should have an exit";
 // console.log(response);
 
+
 // let room = {
 //   number: 23,
 // };
@@ -244,6 +247,7 @@
 //   place: room, // meetup references room
 // };
 // room.occupiedBy = meetup;
+
 
 // let user = {
 //   name: "John",
@@ -255,9 +259,11 @@
 // };
 // console.log(JSON.stringify(user, null, 2));
 
+
 // let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": ["Pete", "Zeke"] }';
 // let user = JSON.parse(userData);
 // console.log(user);
+
 
 // let numbers = "[0, 1, 2, 3]";
 // numbers = JSON.parse(numbers);
@@ -280,9 +286,11 @@
 //   })
 // );
 
+
 // let arr = [{firNam: "John", salary: 1800},
 //             {firNam: "Pete", salary: 900}]
 // console.log( arr.reduce((prev, current) => prev + current.salary, 0) );
+
 
 // let company = {
 //   // the same object, compressed for brevity
@@ -312,6 +320,7 @@
 // };
 // console.log(recurTrav( company ));
 
+
 //                                                                                  REST PARAMS
 // function allArgs ( ...args ){
 //   for ( let i = 0; i < args.length; i++){
@@ -325,10 +334,12 @@
 // console.log([...str]);
 // console.log( Array.from(str) );
 
+
 //                                                                                  COPYING ARRAY AND OBJECTS
 // let arr = [1, 2, 3];
 // let arrCopy = [...arr];
 // console.log(arr === arrCopy);
+
 
 //                                                                                  NESTED FUNCTIONS
 // function sayHiBye( firstName, lastName ) {
@@ -339,6 +350,7 @@
 // }
 // console.log( sayHiBye("Eren","Jeager") );
 
+
 //                                                                                  FUNCTION OBJECT AND IT'S PROPEERTIES
 // "name" and "length" properties in a function
 // function fullName ( fName, lName ) {
@@ -347,18 +359,22 @@
 // fullName( "Eren", "Jeager" );
 // console.log( fullName.arguments );
 
+
 // Adding custom properties to a function
 // const user = {};
 // user.fName = "Eren";
 // console.log(user);
+
 
 //                                                                                  setTimeout and setInterval
 // let greet = ( firNam, lastNam ) => {
 //     console.log( "Hello" + ", " + firNam + " " + lastNam );
 // };
 
+
 // let timerId = setTimeout( greet, 1000, "Eren", "Jeager" );               setTimeout
 // console.log(timerId);
+
 
 // let greet = () => {
 //     console.log("Hi")
@@ -368,25 +384,30 @@
 //     clearInterval(timerId)               clearInterval
 // }, 10000);
 
+
 //                                                                                  NESTED setTimeout
 // let timerId1 = setTimeout(function tick() {
 //   console.log("tick1");
 //   timerId1 = setTimeout(tick, 1000); // (*)
 // }, 5000);
 
+
 // let timerId = setTimeout( greet = () => {
 //     console.log( "Hi" );
 //     timerId = setTimeout (greet, 250)
 // },250);
+
 
 // let greet = () => {
 //     console.log( "Hi, Eren" );
 // };
 // let timer = setTimeout( greet, 1000)
 
+
 // setTimeout(greeting = s() => {
 //     console.log( "Hi, Mikasa" )
 // }, 1000);
+
 
 // let counter = 0;
 // let timerId = setInterval(() => {
@@ -395,6 +416,7 @@
 //     }
 //     console.log(counter++);
 // }, 1000);
+
 
 //                                                                                  FUNCTION BINDING
 // let user = {
@@ -406,6 +428,7 @@
 // let funcUser = func.bind(user);
 // funcUser();
 
+
 // let user = {
 //   firstName: "John",
 //   sayHi() {
@@ -414,6 +437,7 @@
 // };
 // let sayHi = user.sayHi.bind(user);
 // console.log(sayHi);
+
 
 //                                                                                  ARROW FUNCTIONS REVISITED
 // let group = {
@@ -427,12 +451,14 @@
 // };
 // group.showList();
 
+
 //                                                                                  PROPERTY FLAGS
 // let user = {
 //   firName: "John",
 // };
 // let descriptor = Object.getOwnPropertyDescriptor(user, 'firName');       //.getOwnPropertyDescriptor
 // console.log( JSON.stringify( descriptor, null, 2 ));
+
 
 // let user = {
 //   firNam: "John",
@@ -441,26 +467,101 @@
 //   writable: false,
 //   configurable: false,
 // });
-
 // Object.defineProperty(user, "firNam", {
 //   writable: true,
 // });
-
 // let descriptor = Object.getOwnPropertyDescriptor(user, "firNam");
 // console.log(descriptor);
 
-let user = {
-  name: "John"
-};
-Object.defineProperty(user, "name", {
-  writable: false,
-  configurable: false
-});
-// won't be able to change user.name or its flags
-// all this won't work:
-user.name = "Pete";
-// delete user.name;
-Object.defineProperty(user, "name", { value: "Pete" });
+
+// let user = {
+//   name: "John",
+// };
+// Object.defineProperty(user, "name", {
+//   writable: false,
+//   configurable: false,
+// });
+// /*
+// won't be able to change user.name
+//             or
+//         its flags
+// */
+// // all this won't work:
+// user.name = "Pete";
+// // delete user.name;
+// Object.defineProperty(user, "name", {
+//   value: "Pete"
+// });                                           //Error
 // Object.defineProperty(user, "name", {
 //   writable: true,
-// });                                             
+// });                                           //Error
+
+
+// try {
+//   setTimeout(function () {
+//     noSuchVariable; // script will die here
+//   }, 1000);
+// } catch (err) {
+//   alert("won't work");
+// }
+
+
+// let json = '{"bad JSON"}';
+// try {
+//   let user = JSON.parse(json);                    // <-- when an error occurs...
+//   console.log(user.name);                   // doesn't work
+// }
+// catch (err) {                   // ...the execution jumps here
+//   console.log("Our apologies, the data has errors, we'll try to request it one more time.");
+//   console.log(err.name);
+//   console.log(err.message);
+
+
+// let json = '{ "age": 30 }';
+// try {
+//   let user = JSON.parse(json);
+
+//   if (!user.name) {
+//     throw new SyntaxError("Incomplete data: no name");
+//   }
+//   console.log(user.name);
+
+// }
+// catch (err) {
+//   console.log(err)
+//   console.log("JSON Error: " + err.message); // JSON Error: Incomplete data: no name
+// };
+
+//                                                                                  PRACTICE
+//                                    1. Add Two Numbers Without Using Plus Operator
+// let arr1 = [];
+// for (let a = +prompt("enter 1st number to add"); a > 0; a--){
+//   if (a != 0){
+//     arr1.push(a);
+//   }
+// }
+// for (let b = +prompt("enter 2nd number to add"); b > 0; b--){
+//   if (b != 0){
+//     arr1.push(b);
+//   }
+// }
+// console.log(arr1.length);
+
+/*    2. Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.       
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].    */
+
+let arr = [];
+function twoSum(nums){
+  let num = [1, 2, 3];
+  for(let i = 0; i < num.length; i++){
+    arr.push(nums[i]);
+  }
+  return arr;
+}
+let res = twoSum();
+console.log(res);
